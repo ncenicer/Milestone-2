@@ -1,13 +1,4 @@
 
-// w3schools.com/nodejs/nodejs_mysql_insert.asp
-
-// https://github.com/chuckdries/cpi310-fall-2019/blob/master/index.js this could be worth doing 
-
-// So what I think needs to happen is this needs to be in the same file as our regular server. It can't just be a script
-// That's what Chuck has
-// is there anyway i can test this 
-// you could save the files locally on your computer?
-
 const bodyParser = require('body-parser');
 const path = require('path');
 const sqlite = require("sqlite");
@@ -83,22 +74,3 @@ const setup = async () => {
 };
 
 setup();
-// do you wanna use discord or something to work on it 
-// yeah sure that'd be easier. I never know when you're making comments
-// https://discord.gg/s9jPTb 
-// going to hunt for my headphones
-// found them kk 
-/*
-do we need some code like this
-const setup = async () => {
-  const db = await dbPromise;
-  db.migrate({ force: "last" });
-  app.listen(3000, () => console.log("listening on http://localhost:3000"));
-};
-
-setup();
-*/
-
-// Probably. I'm running into an issue too where it'll load index.html but without images or CSS, and it won't load other pages
-// Alright I figured out how to get app.get to load multiple pages, still isn't loading the CSS or images
-// And the form works. I'm getting console logs at least. 
