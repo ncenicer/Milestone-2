@@ -81,6 +81,8 @@ app.get('/myLibrary.html', async (req, res) => {
 app.get('/searchResults.html', async (req,res) => {
     res.sendFile(path.join(__dirname + '/searchResults.html'));
 });
+
+// Handles search requests
 app.post('/search', async (req,res) => {
     // other stuff goes here
     res.redirect('/searchResults.html');
