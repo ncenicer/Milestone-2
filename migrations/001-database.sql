@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users
   password STRING
 );
 
-CREATE TABLE IF NOT EXISTS pdfs           -- Full implementation to come later
+CREATE TABLE IF NOT EXISTS pdfs         
 (
   isbn INTEGER PRIMARY KEY,
   title STRING,
@@ -23,10 +23,11 @@ CREATE TABLE IF NOT EXISTS authTokens
   FOREIGN KEY (userId) REFERENCES users(id)
 );
 
+-- pdf tables will be static
 INSERT INTO pdfs (isbn, title, author, fileName)
 VALUES
   (9780194230032, "Frankenstein", "Mary Shelley", "frankenstein.pdf"),
-  (082191673, "The Scarlet Letter", "Nathaniel Hawthorne", "The_Scarlet_Letter.pdf")
+  (082191673, "The Scarlet Letter", "Nathaniel Hawthorne", "The_Scarlet_Letter.pdf"),
   (1575210304, "Teach Yourself Java in 21 Days", "Laura Lemay", "LearnJava.pdf");
   
 
