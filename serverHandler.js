@@ -6,6 +6,7 @@ const express = require('express');
 const dbPromise = sqlite.open("./data.sqlite");
 const cookieParser = require("cookie-parser");
 const uuidv4 = require("uuid/v4");
+var search;
 
 // Setting our local port as 3000
 const port = 3000
@@ -78,22 +79,44 @@ app.get('/myLibrary.html', async (req, res) => {
         res.sendFile(path.join(__dirname + '/myLibrary.html'));
     }
 });
-app.get('/searchResults.html', async (req,res) => {
-    res.sendFile(path.join(__dirname + '/searchResults.html'));
-});
 
-// Handles search requests
+// Search Request Handler
 app.post('/search', async (req,res) => {
     const db = await dbPromise;
-    const search = await db.get(
+    search = await db.get(
         "SELECT * FROM pdfs WHERE isbn =? OR author =? OR title=?", 
         req.body.search,
         req.body.search,
         req.body.search
     );
     console.log(search);
+    const isbnP = document.getElementbyId('isbn');
+    const titleP = document.getElementbyId('title');
+    const authorP = document.getElementbyId('author');
+    if(search)
+    {
+        isbnP = search.isbn;
+        titleP = search.title;
+        authorP = search.author;
+    }
+    else
+    {
+        isbnP = "Error: PDF not found";
+        titleP = "";
+        authorP = "";
+    }
+
     res.redirect('/searchResults.html');
 });
+// Search Page Getter
+app.get('/searchResults.html', async (req,res) => {
+    res.sendFile(path.join(__dirname + '/searchResults.html'));
+});
+// Proto download handler
+/*
+app.get('/download', async(req, res) => {
+    res.download(path.join(__dirname + '/public/pdfs' + ));
+});*/
 
 // User Creation
 app.post('/create', async (req, res) => {
@@ -146,13 +169,6 @@ app.post('/login', async (req, res) => {
    
 });
 
-
-// Proto download handler, will be implemented more intelligently later
-/*
-app.get('/download', async(req, res) => {
-    res.download(path.join(__dirname + '/public/pdfs' + ));
-});*/
-
 const setup = async () => {	
         const db = await dbPromise;
         db.migrate({ force: "last"}); 
@@ -163,6 +179,3 @@ const setup = async () => {
 
 setup();
 
-/*
-
-*/
