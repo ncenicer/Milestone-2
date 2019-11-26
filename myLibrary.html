@@ -20,10 +20,10 @@
         <a class="button" href="myLibrary.html"> My Library </a>
       </ul>
     </div>
-              <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><img src="magnifying_glass.png" width="20px"/></button>
-        </form>
+    <form class="search-bar2" action="/search_page.php">
+      <input class="input2" type="text" placeholder="Search for Textbook by ISBN/Title" name="search">
+      <button class="search-icon2"><img src="magnifying_glass.png" width="20px"/></button>
+  </form> 
   </div>
 </nav>
 
@@ -46,32 +46,43 @@
       </div>
     <div class="row">
       <div class="column">
-          <div class="column-container" > <img src="pdf_icon.png" width="100px"> </div>
-          <p style="text-align: center;"> filename.pdf </p> 
+          <div class="column-container" >  <!-- Downloads handled in serverHandler.js (TC) -->
+            <form action="/download1" method="GET"><button><img src="frankenstein.jpg" width="100px"> </button></form>
+          <p style="text-align: center;"> frankenstein.pdf </p> 
+        </div>
       </div>
       <div class="column">
-          <div class="column-container" > <img src="pdf_icon.png" width="100px">  </div>
-          <p style="text-align: center;"> filename.pdf </p> 
+          <div class="column-container" > 
+              <form action="/download2" method="GET"><button><img src="moby_dick.jpg" width="100px"></button></form>  
+          <p style="text-align: center;"> Moby_Dick.pdf </p> 
+          </div>
         </div>
         <div class="column">
-            <div class="column-container" > <img src="pdf_icon.png" width="100px">  </div>
-            <p style="text-align: center;"> filename.pdf </p> 
+            <div class="column-container" > 
+              <form action="/download3" method="GET"><button><img src="modestproposal.jpg" width="100px"></button></form>  
+            <p style="text-align: center;"> modestsproposal.pdf </p> 
+            </div>
           </div>
           <div class="column">
-              <div class="column-container" > <img src="pdf_icon.png" width="100px">  </div>
-              <p style="text-align: center;"> filename.pdf </p> 
+              <div class="column-container" > 
+                  <form action="/download4" method="GET"><button><img src="dracula.jpg" width="100px"></button></form>  
+              <p style="text-align: center;"> dracula.pdf </p> 
+              </div>
             </div>
             <div class="column">
-                <div class="column-container" > <img src="pdf_icon.png" width="100px">  </div>
-                <p style="text-align: center;"> filename.pdf </p> 
+                <div class="column-container" > 
+                    <form action="/download5" method="GET"><button><img src="The_Scarlet_Letter.jpg" width="100px"></button></form>  
+                <p style="text-align: center;"> The_Scarlet_Letter.pdf </p>
+              </div> 
               </div>
-  
+  <!--
         <div class = "pagination">
           <a href = "#" > &laquo;</a>
           <a  class = "active" href = "#" > 1 </a>
           <a href = "#" > 2 </a>
           <a href = "#" > &raquo;</a>
         </div> 
+      -->
     </div>
   </div>
   

@@ -4,26 +4,49 @@ const path = require('path');
 const sqlite = require("sqlite");
 const express = require('express');
 const dbPromise = sqlite.open("./data.sqlite");
+const cookieParser = require("cookie-parser");
+const uuidv4 = require("uuid/v4");
 
 // Setting our local port as 3000
 const port = 3000
 const app = express();
-
 
 //app.engine('html', require('ejs').__express);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(cookieParser());
 
-/*
-app.get("/", async (req, res) => {
-    const db = await dbPromise;
-    const users = await db.all("SELECT * FROM users");
-    console.log(users);
-});*/
+const authorize = async (req, res, next) => {
+  const db = await dbPromise;
+  const token = req.cookies.authToken;
+  console.log("token from authorize:", token);
+  if (!token) {
+    return next();
+  }
 
-// Currently this is pulling the straight HTML page but isn't posting the CSS or images
+  const authToken = await db.get(
+    "SELECT * FROM authTokens WHERE token=?",
+    token
+  );
+  console.log("authToken from authorize", authToken);
+  if (!authToken) {
+    return next();
+  }
+
+  const user = await db.get(
+    "SELECT email, id FROM users WHERE id=?",
+    authToken.userId
+  );
+  console.log("user from authorize", user);
+
+  req.user = user;
+  next();
+};
+
+app.use(authorize);
+
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
@@ -39,17 +62,27 @@ app.get('/howToUse.html', function(req, res) {
 app.get('/index.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
-app.get('/myLibrary.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/myLibrary.html'));
+app.get('/myLibrary.html', async (req, res) => {
+    const db = await dbPromise;
+    const token = req.cookies.authToken;
+    const authToken = await db.get(
+        "SELECT * FROM authTokens WHERE token=?",
+        token
+      );
+    if (!authToken)
+    {
+        res.sendFile(path.join(__dirname + '/noLogin.html'));
+    }
+    else
+    {
+        res.sendFile(path.join(__dirname + '/myLibrary.html'));
+    }
 });
 
-
-app.post('/data', async (req, res) => {
+// User Creation
+app.post('/create', async (req, res) => {
     const db = await dbPromise;
-    console.log(req.body.firstName);
-    console.log(req.body.lastName);
-    console.log(req.body.email);
-    console.log(req.body.password);
+    console.log("User Creation");
     await db.run(
         "INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?);",
         req.body.firstName,
@@ -57,20 +90,58 @@ app.post('/data', async (req, res) => {
         req.body.email,
         req.body.password
     );
-    
+    const user = await db.get("SELECT * FROM users WHERE email=?", req.body.email);
+    const token = uuidv4();
+    await db.run(
+        "INSERT INTO authTokens (token, userId) VALUES (?, ?)",
+        token,
+        user.id
+    );
+    res.cookie("authToken", token);
+    console.log(user);
+    console.log(token);
+    res.redirect("/");
 });
+
+// Login Handler
+app.post('/login', async (req, res) => {
+    const db = await dbPromise;
+    const email = req.body.email;
+    const password = req.body.password;
+    const user = await db.get("SELECT * FROM users WHERE email = ?", email);
+    if (!user) {
+        console.log("User not found");
+    }
+    else if (password != user.password)   {
+        console.log("Password incorrect");
+    }
+    else {
+        const token = uuidv4();
+        await db.run(
+            "INSERT INTO authTokens (token, userId) VALUES (?, ?)",
+            token,
+            user.id
+        );
+        res.cookie("authToken", token);
+        console.log("Login successful");
+        console.log(user);
+        res.redirect("/");
+    }
+   
+});
+
+// Proto download handler, will be implemented more intelligently later
+/*
+app.get('/download', async(req, res) => {
+    res.download(path.join(__dirname + '/public/pdfs' + ));
+});*/
 
 const setup = async () => {	
         const db = await dbPromise;
-        //db.migrate({ force: "last"});
-        await db.run(`CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY,
-            firstName STRING,
-            lastName STRING,
-            email STRING,
-            password STRING
-            );`);
-        app.listen(3000, () => console.log("listening on http://localhost:3000"));
+        db.migrate({ force: "last"}); 
+        app.listen(3000, async () => {
+            console.log("listening on http://localhost:3000");
+        });
 };
 
 setup();

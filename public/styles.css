@@ -1,204 +1,377 @@
 ﻿/* Authors: Naomi Ceniceros, Callie Houlihan, Scott Lynch, Thomas Chilton */
+
 /* Styling for headings and background*/
 body {
-    background-color: #7EBDC2;
+  background-color: #7EBDC2;
 }
-
 h1{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 50px;
-    color: #E7BB41;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  color: #E7BB41;
 }
-
 h2{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: #E7BB41;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #E7BB41;
 }
-
 h3{
-    font-size: 18px;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: white;
+font-size: 18px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: #2D3047;
 }
-
 h4{
-    font-size: 26px;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 1px;
-    color: white;
+  font-size: 26px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  color: white;
 }
-
 h5{
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: white;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: white;
 }
-
 p{
-    font-family: 'Lato', sans-serif;
-    color: #2D3047;
-    font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  color: #2D3047;
+  font-size: 16px;
 }
 
 /* Buttons for tabs on Navbar and create acct on index.html */
 .button {
-    border: none;
-    padding: 8px 22px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  border: none;
+  padding: 8px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
-	a:link {
-	  text-decoration: none;
-	  color: white;
-	}
+a:link {
+  text-decoration: none;
+  color: white;
+}
 
-	a:visited {
-	  text-decoration: none;
-	  color: white;
-	}
+a:visited {
+  text-decoration: none;
+  color: white;
+}
 
-	a:hover {
-	  color: #2D3047;
-	}
+a:hover {
+  color: #2D3047;
+}
 
+.button-setting{
+  border: none;
+  padding: 8px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: rgb(86,102,107);
+  color: white;
+}
+b:link {
+  text-decoration: none;
+  color: white;
+}
+
+b:visited {
+  text-decoration: none;
+  color: white;
+}
+
+b:hover {
+  color: #E7BB41;
+}
 
 /* Styling for Form PopUp in index.html*/
 .login-popup{
-    position: relative;
-    text-align: center;
-    width: 100%;
+  position: relative;
+  text-align: center;
+  width: 100%;
 }
 
 .form-popup{
-    display: none;
-    position: fixed;
-    left: 1100px;
-    bottom: 705px;
-    transform: translate(-200px, 400px);
-    border: none;
-    z-index: 9;
+  display: none;
+  position: fixed;
+  left: 1100px;
+  bottom: 705px;
+  transform: translate(-200px, 400px);
+  border: none;
+  z-index: 9;
 }
 
 .form-container{
-    max-width: 300px;
-    padding: 20px;
-    background-color: rgb(86,102,107);
+  max-width: 300px;
+  padding: 20px;
+  background-color: rgb(86,102,107);
 }
-
+.form-container::placeholder{
+font-size: 18px;
+}
 .form-container input[type=text], .form-container input[type=password]{
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #eee;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #eee;
+  font-size: 18px;
 }
 
 .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
+  background-color: #ddd;
+  outline: none;
 }
+
 
 /* Log In button */
 .form-container .btn{
-    background-color: rgb(126,189,194);
-    border: none;
-    padding: 8px 22px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0.8;
+  background-color: rgb(126,189,194);
+  border: none;
+  padding: 8px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
 }
 /* Close button */
 .form-container .cancel{
-    background-color: rgb(231,187,65);
+  background-color: rgb(231,187,65);
 }
 .form-container .btn:hover, .open-button:hover{
-    opacity: 1;
+  opacity: 1;
 }
 
 
 /* Navigation Bar from Bootstrap */
 .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
+    margin-bottom: 0;
+    border-radius: 0;
 }
 .row.content {
-    height: 450px
+  height: 450px
 }
 .sidenav {
-      padding-top: 20px;
-      background-color: #f1f1f1;
-      height: 100%;
+    padding-top: 20px;
+    background-color: #2D3047;
+    height: 100%;
 }
 @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
+    .row.content {height:auto;} 
 }
 
 
 .mainpage {
-  position: relative;
+position: relative;
 }
 .mainpage2 {
-  position: center;
+position: center;
 }
 
 .centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
 
 .text-block {
-  position: absolute;
-  top: 100px;
-  left: 50px;
-  right: 700px;
-  background-color: #7EBDC2;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top:20px;
-  padding-bottom: 10px;
+position: absolute;
+top: 100px;
+left: 3.6%;
+right: 44%;
+background-color: #7EBDC2;
+padding-left: 20px;
+padding-right: 20px;
+padding-top:20px;
+padding-bottom: 10px;
 }
 
 .text-block2 {
-  position: absolute;
-  top: 250px;
-  left: 50px;
-  right: 1050px;
-  background-color: rgb(231,187,65);
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top:10px;
-  padding-bottom: 10px;
+position: absolute;
+top: 250px;
+left: 3.6%;
+right: 74%;
+background-color: rgb(231,187,65);
+padding-left: 20px;
+padding-right: 20px;
+padding-top:10px;
+padding-bottom: 10px;
 }
 
 .row::after {
-  content: "";
-  clear: both;
-  display: table;
+content: "";
+clear: both;
+display: table;
 }
 .column {
-  float: left;
-  width: 20%;
-  padding: 5px;
+float: left;
+width: 20%;
+padding: 40px;
+}
+
+.column2{
+float: left;
+width: 33.33%;
+padding: 30px;
+}
+
+.column-container{
+width: 120px;
+height: 150px;
+padding: 9px;
+background-color: white;
+}
+
+/* pagination used in myLibrary.html */
+.pagination a {
+color: white;
+float: left;
+padding: 8px 16px;
+text-decoration: none;
+transition: background-color .3s;
+}
+
+.pagination a.active{
+background-color: #E7BB41;
+color: white;
+}
+
+.pagination a:hover:not(.active){
+background-color: rgb(86,102,107);
+}
+
+/* Search Bar on Main Page */
+.search-bar input[type=text] {
+padding: 12px;
+border: none;
+font-size: 22px;
+}
+
+.search-bar{
+position: absolute;
+top: 58%;
+left: 3.5%;
+width: 62%;
+}
+
+.search-icon {
+position: fixed;
+outline: none;
+background-color: #E7BB41;
+padding: 0.7%;
+}
+
+input::placeholder{
+font-family: 'Montserrat' ;
+font-size: 22px;
+}
+
+input{
+height: 10%;
+width: 80%;
+}
+
+/* Search bar on other pages (top right) */
+.search-bar2{
+position: absolute;
+top: 20%;
+right: 3.5%;
+width: 25%;
+}
+.search-bar2 input[type=text] {
+padding: 8px;
+border: none;
+font-size: 16px;
+}
+.input2{
+height: 10%;
+width: 80%;
+}
+.input2::placeholder{
+font-family: 'Montserrat' ;
+font-size: 16px;
+}
+.search-icon2 {
+  position: absolute;
+  outline: none;
+  background-color: #E7BB41;
+  padding-top: 0.8%;
+  padding-bottom: 1.6%;
+}
+
+
+/* Color overlay for books.jpg on index.html */
+.tinted-img{
+background: 
+  linear-gradient(
+    #2D3047, 
+    #E7BB41
+  ); 
+}
+
+/* size of form input boxes */
+.form-accnt{
+height: 15%;
+width: 20%;
+}
+.form-accnt::placeholder{
+font-family: 'Montserrat' ;
+font-size: 16px;
+}
+.form-accnt input[type=text] {
+padding: 10px;
+border: none;
+font-size: 16px;
+font-family: 'Montserrat';
+}
+.submit-button {
+border: none;
+padding: 8px 22px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+font-family: 'Montserrat', sans-serif;
+letter-spacing: 2px;
+text-transform: uppercase;
+background-color: #2D3047;
+color: white;
+}
+.submit-button:link {
+text-decoration: none;
+color: white;
+}
+
+.submit-button:visited {
+text-decoration: none;
+color: white;
+}
+
+.submit-button:hover {
+color: #E7BB41;
+}
+
+/* Background color for titles on pages */
+.jumbotron.text-center{
+background-color: #2D3047;
 }

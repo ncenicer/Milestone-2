@@ -9,59 +9,57 @@
     <title> PDF Hub</title>
 </head>
 <body>
-  <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-       <ul class="nav navbar-nav">
-        <li class="active"> <a href="index.html"><img src="logo2.png" width="110px"/> </a>
-        <a class="button" href="about.html"> About </a>
-        <a class="button" href="createAccount.html"> Create an Account </a>
-        <a class="button" href="howToUse.html"> How to Use PDF Hub </a>
-        <a class="button" href="myLibrary.html"> My Library </a>
-      </ul>
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+         <ul class="nav navbar-nav">
+          <li class="active"> <a href="index.html"><img src="logo2.png" width="110px"/> </a>
+          <a class="button" href="about.html"> About </a>
+          <a class="button" href="createAccount.html"> Create an Account </a>
+          <a class="button" href="howToUse.html"> How to Use PDF Hub </a>
+          <a class="button" href="myLibrary.html"> My Library </a>
+          <form class="search-bar2" action="/search_page.php">
+            <input class="input2" type="text" placeholder="Search for Textbook by ISBN/Title" name="search">
+            <button class="search-icon2"><img src="magnifying_glass.png" width="20px"/></button>
+        </form> 
+        </ul>
+      </div>
     </div>
-              <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><img src="magnifying_glass.png" width="20px"/></button>
-        </form>
-  </div>
-</nav>
+  </nav>
 
   <div class="jumbotron text-center">
     <h1> Create an Account </h1>
   </div>
     <div class="container">
-        <form action="/data" method="POST">
+        <form action="/create" class="form-container" method="POST"> <!-- Implementation in serverHandler.js -->
             <p> To use all of PDFhub's capabilties and access to a library of PDF files, you must sign up for an account. </p>
 
             <div>
             <label for="name"><h3>First Name</h3></label>
                 <br />
-            <input type="text" placeholder="Enter First Name" name="firstName" required="required">
+            <input class="form-accnt" type="text" placeholder="Enter First Name" name="firstName" required="required">
             </div>
                 <br />
             <div>
             <label for="lastname"><h3>Last Name</h3></label>
                 <br />
-            <input type="text" placeholder="Enter Last Name" name="lastName" required="required">
+            <input class="form-accnt" type="text" placeholder="Enter Last Name" name="lastName" required="required">
             </div>
                 <br />
             <div>
             <label for="email"><h3>Email</h3></label>
                 <br />
-            <input type="text" placeholder="Enter Email" name="email" required="required">
+            <input class="form-accnt" type="text" placeholder="Enter Email" name="email" required="required">
             </div>
                 <br />
             <div>
             <label for="password"><h3>Password</h3></label>
                 <br />
-            <input type="text" placeholder="Enter Password" name="password" required="required">
+            <input class="form-accnt" type="password" placeholder="Enter Password" name="password" required="required"> <!-- changed so password is hidden (TC)-->
             </div>
                 <br />
                 <br />
-            </div>
-            <div>
-              <input type="submit" class="btn">
+                <button class="submit-button" type="submit"> Submit </button>
             </div>
         </form>
     </div>
