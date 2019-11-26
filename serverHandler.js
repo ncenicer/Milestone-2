@@ -62,6 +62,7 @@ app.get('/howToUse.html', function(req, res) {
 app.get('/index.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
+// Special library handler checks to see if someone is an authorized user
 app.get('/myLibrary.html', async (req, res) => {
     const db = await dbPromise;
     const token = req.cookies.authToken;
@@ -89,30 +90,23 @@ app.post('/search', async (req,res) => {
         req.body.search
     );
     console.log(search);
-    // DOM does not work in Node JS, solution pending
-    /*
-    const isbnP = document.getElementbyId('isbn');
-    const titleP = document.getElementbyId('title');
-    const authorP = document.getElementbyId('author');
+    // DOM does not work in Node JS, HTML manipulation solution pending
     if(search)
     {
-        isbnP = search.isbn;
-        titleP = search.title;
-        authorP = search.author;
+
     }
     else
     {
-        isbnP = "Error: PDF not found";
-        titleP = "";
-        authorP = "";
+
     }
-    */
-    res.redirect('/searchResults.html');
+   res.redirect('/searchResults.html');
 });
 // Search Page Getter
 app.get('/searchResults.html', async (req,res) => {
     res.sendFile(path.join(__dirname + '/searchResults.html'));
 });
+
+// Download handler, can't be implemented until HTML manipulation is figured out
 /*
 app.get('/download', async(req, res) => {
     res.download(path.join(__dirname + '/public/pdfs' + ));
@@ -169,6 +163,7 @@ app.post('/login', async (req, res) => {
    
 });
 
+// Final server setup 
 const setup = async () => {	
         const db = await dbPromise;
         db.migrate({ force: "last"}); 
