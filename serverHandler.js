@@ -84,7 +84,14 @@ app.get('/searchResults.html', async (req,res) => {
 
 // Handles search requests
 app.post('/search', async (req,res) => {
-    // other stuff goes here
+    const db = await dbPromise;
+    const search = await db.get(
+        "SELECT * FROM pdfs WHERE isbn =? OR author =? OR title=?", 
+        req.body.search,
+        req.body.search,
+        req.body.search
+    );
+    console.log(search);
     res.redirect('/searchResults.html');
 });
 
