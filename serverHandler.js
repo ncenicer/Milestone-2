@@ -6,7 +6,6 @@ const express = require('express');
 const dbPromise = sqlite.open("./data.sqlite");
 const cookieParser = require("cookie-parser");
 const uuidv4 = require("uuid/v4");
-var search;
 
 // Setting our local port as 3000
 const port = 3000
@@ -83,7 +82,7 @@ app.get('/myLibrary.html', async (req, res) => {
 // Search Request Handler
 app.post('/search', async (req,res) => {
     const db = await dbPromise;
-    search = await db.get(
+    const search = await db.get(
         "SELECT * FROM pdfs WHERE isbn =? OR author =? OR title=?", 
         req.body.search,
         req.body.search,
