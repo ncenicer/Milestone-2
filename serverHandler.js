@@ -89,6 +89,8 @@ app.post('/search', async (req,res) => {
         req.body.search
     );
     console.log(search);
+    // DOM does not work in Node JS, solution pending
+    /*
     const isbnP = document.getElementbyId('isbn');
     const titleP = document.getElementbyId('title');
     const authorP = document.getElementbyId('author');
@@ -104,14 +106,13 @@ app.post('/search', async (req,res) => {
         titleP = "";
         authorP = "";
     }
-
+    */
     res.redirect('/searchResults.html');
 });
 // Search Page Getter
 app.get('/searchResults.html', async (req,res) => {
     res.sendFile(path.join(__dirname + '/searchResults.html'));
 });
-// Proto download handler
 /*
 app.get('/download', async(req, res) => {
     res.download(path.join(__dirname + '/public/pdfs' + ));
