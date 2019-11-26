@@ -78,6 +78,13 @@ app.get('/myLibrary.html', async (req, res) => {
         res.sendFile(path.join(__dirname + '/myLibrary.html'));
     }
 });
+app.get('/searchResults.html', async (req,res) => {
+    res.sendFile(path.join(__dirname + '/searchResults.html'));
+});
+app.post('/search', async (req,res) => {
+    // other stuff goes here
+    res.redirect('/searchResults.html');
+});
 
 // User Creation
 app.post('/create', async (req, res) => {
@@ -130,6 +137,7 @@ app.post('/login', async (req, res) => {
    
 });
 
+
 // Proto download handler, will be implemented more intelligently later
 /*
 app.get('/download', async(req, res) => {
@@ -145,3 +153,7 @@ const setup = async () => {
 };
 
 setup();
+
+/*
+
+*/

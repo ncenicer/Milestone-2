@@ -24,19 +24,19 @@ CREATE TABLE IF NOT EXISTS authTokens
 );
 
 -- pdf tables will be static
-INSERT INTO pdfs (isbn, title, author, fileName)
+INSERT OR IGNORE INTO pdfs (isbn, title, author, fileName)
 VALUES
   (9780194230032, "Frankenstein", "Mary Shelley", "frankenstein.pdf"),
   (082191673, "The Scarlet Letter", "Nathaniel Hawthorne", "The_Scarlet_Letter.pdf"),
   (1575210304, "Teach Yourself Java in 21 Days", "Laura Lemay", "LearnJava.pdf");
   
 
-INSERT INTO pdfs (title, author, fileName)
+INSERT OR IGNORE INTO pdfs (title, author, fileName)
 VALUES
   ("Dracula", "Bram Stoker", "dracula.pdf"),
   ("Moby Dick", "Herman Melville", "Moby_Dick.pdf"),
   ("A Modest Proposal", "Jonathan Swift", "modestproposal.pdf");
- 
+
 -- Down
 -- DROP TABLE users;
 -- DROP TABLE pdfs;
